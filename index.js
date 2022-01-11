@@ -61,13 +61,13 @@ app.get('/services', async(req,res) =>{
 //   TravelProducts
 
 
-app.get('/travelProducts', async(req,res) =>{
+/* app.get('/travelProducts', async(req,res) =>{
    
     const cursor = servicesCollection.find({});
     const services = await cursor.toArray();
     // console.log(services)
     res.send(services);
-  })
+  }) */
 
 
 

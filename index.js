@@ -35,7 +35,7 @@ async function run(){
     const database = client.db("Tour-Travel-Database");
     const servicesCollection = database.collection("services");
     const OrderPakayge =  database.collection("orderPackage");
-
+const travelProducts = database.collection("travelProducts");
 
 
     
@@ -56,6 +56,21 @@ app.get('/services', async(req,res) =>{
     // console.log(services)
     res.send(services);
   })
+
+
+//   TravelProducts
+
+
+app.get('/travelProducts', async(req,res) =>{
+   
+    const cursor = servicesCollection.find({});
+    const services = await cursor.toArray();
+    // console.log(services)
+    res.send(services);
+  })
+
+
+
 
 
 //   ORDER POST
@@ -118,6 +133,43 @@ app.delete("/deleteOrder/:id", async (req, res) => {
     console.log(result)
     res.json(result);
 });
+
+
+// Updated products
+
+/* app.put("/CnfirmOrder/:id", async (req, res) => {
+    const id = req.params.id;
+    console.log(id)
+    const filter = {_id: ObjectId(id)};
+    const result = await OrderPakayge.updateOne(filter,{ 
+   
+        $set:{
+            status:"Confirmed",
+        },
+      
+    });
+
+    console.log(result)
+    res.json(result);
+});
+ */
+
+
+ //  update products
+ app.put("/CnfirmOrder/:id", async (req, res) => {
+    const id = req.params.id;
+    console.log('id ',id)
+    const filter = { _id: ObjectId(id) };
+    const result = await OrderPakayge.updateOne(filter, {
+        $set: {
+            status: "Confirmed",
+        },
+    });
+    res.json(result);
+});
+
+
+
 
 
 // MY Order Deleted

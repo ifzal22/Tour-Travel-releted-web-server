@@ -22,7 +22,7 @@ app.use(express.json());
 
 
 app.get("/",(req, res)=>{
-    res.send("HEllow world tour travel website");
+    res.send("HEllow world tour travel website2");
 });
 
 

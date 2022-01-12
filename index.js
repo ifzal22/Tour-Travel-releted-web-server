@@ -42,7 +42,7 @@ const travelProducts = database.collection("travelProducts");
 
     
      // GET Single Service
-     app.get('/servicesID/:id', async (req, res) => {
+     app.get('/services/:id', async (req, res) => {
         const id = req.params.id;
         console.log('getting specific service', id);
         const query = { _id: ObjectId(id) };
@@ -60,6 +60,16 @@ app.get('/services', async(req,res) =>{
   })
 
 
+//   TravelProducts
+
+
+/* app.get('/travelProducts', async(req,res) =>{
+   
+    const cursor = servicesCollection.find({});
+    const services = await cursor.toArray();
+    // console.log(services)
+    res.send(services);
+  }) */
 
 
 
@@ -86,7 +96,7 @@ app.get('/myOrder/:email', async(req,res) =>{
   }) */
 
 
-  app.get("/myOrderEmail/:email", async (req, res) => {
+  app.get("/myOrder/:email", async (req, res) => {
     const result = await OrderPakayge.find({ email: req.params.email }).toArray();
     console.log(result)
     res.json(result);
@@ -105,7 +115,7 @@ app.get('/myOrder/:email', async(req,res) =>{
 });
 
 //    POST API
-app.post('/servicesPost', async(req, res)=>{
+app.post('/services', async(req, res)=>{
     const service = req.body;
 //    console.log('hit the post api', service);
   
